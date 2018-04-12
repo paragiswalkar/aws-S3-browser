@@ -1,0 +1,114 @@
+<!DOCTYPE HTML5>
+<html>
+	<head>
+		<title>AWS S3 Browser</title>
+		<meta http-equiv='cache-control' content='no-cache'>
+		<meta http-equiv='expires' content='0'>
+		<meta http-equiv='pragma' content='no-cache'>
+		<link rel="shortcut icon" href="//aws.amazon.com/favicon.ico">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css">
+        <style type="text/css">
+            #wrapper { padding-left: 0; }
+            #page-wrapper { width: 100%; padding: 5px 15px; }
+            #tb-s3objects { width: 100% !Important; }
+            a { color: #00B7FF; }
+            body { font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+            td { font: 12px "Lucida Grande", Helvetica, Arial, sans-serif; }
+        </style>
+		<script type="text/javascript" src="assets/js/libs/jquery.min.js"></script>
+		<script type="text/javascript" src="assets/js/libs/jquery.ui.widget.js"></script>
+		<script type="text/javascript" src="assets/js/libs/jquery.fileupload.js"></script>
+		<script type="text/javascript" src="assets/js/libs/dropzone.js"></script>
+		<script type="text/javascript" src="assets/js/libs/jquery.form.js"></script>
+		<script type="text/javascript" src="assets/js/libs/sha1.js"></script>
+		<script type="text/javascript" src="assets/js/frantics3browser.js"></script>
+		<script type="text/javascript" src="assets/js/easypagination/js/jquery.snippet.min.js"></script>
+		<script type="text/javascript" src="assets/js/easypagination/lib/jquery.easyPaginate.js"></script>
+		<link rel="stylesheet" href="assets/css/frantics3browser.css" type="text/css" />
+		<link rel="stylesheet" href="assets/css/jquery.fileupload.css" type="text/css" />
+		<link rel="stylesheet" href="assets/css/jquery.fileupload-ui.css" type="text/css" />
+		<link rel="stylesheet" href="assets/css/dropzone.css" type="text/css" />
+		<link rel="stylesheet" href="assets/css/branding.css" type="text/css" />
+		<link rel="stylesheet" href="assets/js/easypagination/css/jquery.snippet.min.css" type="text/css" />
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	</head>
+<body>
+
+<div id="div_login_form">
+	<div class="theming">
+		<!--Put in href your landing page-->
+		<a id="logout" href="#">Logout</a>
+	</div>
+	<div class="card card-container" id="row_contnet">
+            <img id="profile-img" class="profile-img-card" src="assets/avatar_2x.png" />
+            <form class="form-signin" id="login_form" action="" method="GET">
+                <div id="login_error" class="login_error"></div>
+				<input type="text" id="bucket" name="bucket" class="form-control" placeholder="Enter Bucket Name" required autofocus>
+                <input type="text" id="aws_access_key_id" name="aws_access_key_id" class="form-control" placeholder="Enter Access Key" autocomplete="off" required>
+                <input type="password" id="aws_secret_access_key" name="aws_secret_access_key" class="form-control" placeholder="Enter Secret Key" autocomplete="off" required>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" id="login" name="login"><span id="sign_in">Sign in</span><span id="wait_id" style="display:none;">Please Wait...</span></button>
+            </form><!-- /form -->
+    </div>
+</div>
+<div id="searchlist"></div>
+<div id="bucketlist"></div>
+<div id="listbucket"></div>
+<div id="upload">
+	<form id="upload_form" action="/" method="post" enctype="multipart/form-data">
+		<label for="fileupload">Select file to upload: </label><div id="fake_upload">Choose file<input type="file" id="fileupload" name="file" /></div><div id="upload_btn" style="
+    margin: 0;
+    float: left;
+    padding: 5px;
+"></div>
+	<!-- Progress Bar to show upload completion percentage -->
+    	<br><br><div class="progress"><div id="progress" class="bar"></div></div> <div class="wrap"><div class="blocks"><span id="speed">&nbsp;</span></div><div class="blocks">Time Remaining : <span id="remaining"></span></div><div class="blocks">Transfer : <span id="b_transfered"></span></div></div>
+	</form>
+	<br><br>or just drop the files here to upload them immediately.
+	<div id="div_upload_form" class="fade well">
+		Drop files here:
+	</div>
+</div>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.3.0/bootbox.min.js"></script>
+<script src="//sdk.amazonaws.com/js/aws-sdk-2.0.13.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+<script src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<script>
+var frantics3browser = new FranticS3Browser;
+jQuery(document).ready(function(){
+        // See http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region for a listing of proper s3_endpoints.
+	frantics3browser.init({'hash': location.hash, 'login_form': '#login_form', 'div_logout_form': '#div_logout_form', 'div_upload_form': '#upload', 'fileupload_field': '#fileupload', 'bucketlist': '#bucketlist', 'login_error': '#login_error', 's3_endpoint': 's3-ap-southeast-1.amazonaws.com'});
+	
+	$('#logout').on('click',function(){
+		var Backlen=history.length;
+            if (Backlen > 0) history.go(-Backlen);
+	});
+		
+});
+</script>
+<script type="text/javascript">
+	function myFunction() {
+		// Declare variables
+		var input, filter, ul, li, a, i;
+		input = document.getElementById('myInput');
+		filter = input.value.toUpperCase();
+		ul = document.getElementById("bucketlist");
+		li = ul.getElementsByTagName('li');
+
+		// Loop through all list items, and hide those who don't match the search query
+		for (i = 0; i < li.length; i++) {
+			a = li[i].getElementsByTagName("a")[0];
+			if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				li[i].style.display = "";
+			} else {
+				li[i].style.display = "none";
+			}
+		}
+	}
+</script>
+</body>
+</html>
+

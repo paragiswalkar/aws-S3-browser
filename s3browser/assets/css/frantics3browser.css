@@ -1,0 +1,376 @@
+
+
+body {
+     /*background-color: #ccc;*/
+}
+div {
+    /* background-color: #fff; */
+}
+
+div#div_login_form span { display: inline-block; }
+div#div_login_form input[type="text"],div#div_login_form input[type="password"] { /* width: 200px; */ }
+
+div#bucketlist { display: none;padding:25px; }
+div#upload { display: none; }
+#logout { display: none; }
+div#login_error { display: none; background-color: #f00;font-weight:bold;color:#fff;font-size:12px; padding: 5px; width: 100%; }
+
+/* Dropzone effect */
+
+#div_upload_form { padding: 20px; background: palegreen; width: 400px; height: 60px; text-align: left; }
+#div_upload_form.in {
+    width: 600px;
+    height: 120px;
+    font-size: larger;
+    text-align: center;
+}
+#div_upload_form.hover {
+    background: lawngreen;
+}
+#div_upload_form.fade {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    opacity: 1;
+}
+
+#fake_upload { background-color: #cccccc; width: 150px; padding: 10px 20px; position: relative }
+#fileupload { width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; z-index: 100; opacity: 0; -moz-opacity:0; filter:alpha(opacity:0); cursor:pointer; }
+
+@font-face {
+    font-family: 'OpenSansLight';
+    src: url('../fonts/OpenSans-Light-webfont.eot');
+    src: url('../fonts/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Light-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Light-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Light-webfont.svg#OpenSansLight') format('svg');
+	    font-weight: normal;
+	    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansLightItalic';
+    src: url('../fonts/OpenSans-LightItalic-webfont.eot');
+    src: url('../fonts/OpenSans-LightItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-LightItalic-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-LightItalic-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-LightItalic-webfont.svg#OpenSansLightItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url('../fonts/OpenSans-Regular-webfont.eot');
+    src: url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Regular-webfont.svg#OpenSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansItalic';
+    src: url('../fonts/OpenSans-Italic-webfont.eot');
+    src: url('../fonts/OpenSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Italic-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Italic-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Italic-webfont.svg#OpenSansItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansSemibold';
+    src: url('../fonts/OpenSans-Semibold-webfont.eot');
+    src: url('../fonts/OpenSans-Semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Semibold-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Semibold-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Semibold-webfont.svg#OpenSansSemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansSemiboldItalic';
+    src: url('../fonts/OpenSans-SemiboldItalic-webfont.eot');
+    src: url('../fonts/OpenSans-SemiboldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-SemiboldItalic-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-SemiboldItalic-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-SemiboldItalic-webfont.svg#OpenSansSemiboldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansBold';
+    src: url('../fonts/OpenSans-Bold-webfont.eot');
+    src: url('../fonts/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Bold-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Bold-webfont.svg#OpenSansBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansBoldItalic';
+    src: url('../fonts/OpenSans-BoldItalic-webfont.eot');
+    src: url('../fonts/OpenSans-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-BoldItalic-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-BoldItalic-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-BoldItalic-webfont.svg#OpenSansBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansExtrabold';
+    src: url('../fonts/OpenSans-ExtraBold-webfont.eot');
+    src: url('../fonts/OpenSans-ExtraBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-ExtraBold-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-ExtraBold-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-ExtraBold-webfont.svg#OpenSansExtrabold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansExtraboldItalic';
+    src: url('../fonts/OpenSans-ExtraBoldItalic-webfont.eot');
+    src: url('../fonts/OpenSans-ExtraBoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-ExtraBoldItalic-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-ExtraBoldItalic-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-ExtraBoldItalic-webfont.svg#OpenSansExtraboldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body { background-color: #465568; color: #fff; font-size: 12px; font-family: 'OpenSansLight', sans-serif; font-weight: normal; font-style: normal; margin: 0px 50px; }
+div { /* background-color: #333; */ }
+A { color: #fff; font-family: 'OpenSansExtrabold', sans-serif; font-weight: normal; font-style: normal; font-size: 18px; text-decoration: none; }
+A:hover { text-decoration: underline; }
+
+div#div_login_form input[type="text"],div#div_login_form input[type="password"]{ height: 39px; background-color: #FFFFFF; font-family: 'OpenSans', sans-serif; font-weight: normal; font-style: normal; font-size: 20px; color: #000000; }
+div#div_login_form input[type="submit"], #logout{ float: right; background-image: linear-gradient(to bottom, #428bca 0px, #2d6ca2 100%); color: #fff; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; border: 0px; font-family: 'OpenSansLight', sans-serif; font-size: 30px; padding: 5px 30px; font-weight: normal; font-style: normal; margin-right: 10px }
+div#div_login_form.login { height: 70px; margin: 0; }
+div#div_login_form.login .theming { height: 50px; width: 100%; margin: 0px; padding: 20px 0px; }
+div#div_login_form.login .theming h2 { font-size: 32px; margin: 0 20px; line-height: 35px; }
+
+.input_group { float: right; }
+#div_login_form { /* height: 535px; */ margin: 60px; }
+#div_login_form .theming { float: left; margin-left: 250px; padding: 60px; margin-top:60px; width: 250px; }
+#div_login_form .theming h1 { float: left; width: 170px; height: 32px; display: block; margin: 0px 8px 10px; font-size: 28px; }
+#div_login_form .theming h2 { float: left; font-size: 95px; margin: 0px; font-family: 'OpenSansExtrabold', sans-serif; font-weight: normal; font-style: normal; text-transform: uppercase; line-height: 90px; }
+/*#login_form { float: left; height: 55%; width: 500px; margin-top:90px; }
+#login_form label { font-size: 30px; color: #000; font-family: 'OpenSansLight', sans-serif; font-weight: normal; font-style: normal; }*/
+
+div#login_error { background-color: #dd4b39; clear: both; }
+
+UL.root { border-top: 1px solid #aaa; padding:15px; }
+UL.root LI { line-height: 20px; margin: 10px; list-style:none; }
+
+span.root { border-top: 1px solid #aaa; padding:15px; }
+span.root LI { line-height: 20px; margin: 10px; list-style:none; }
+
+#upload { font-family: 'OpenSansExtrabold', sans-serif; font-weight: normal; font-style: normal; font-size: 18px;margin-top:5px;padding:15px; }
+#div_upload_form { background-color: #999; border: 3px dashed #bbb; font-family: 'OpenSansExtrabold', sans-serif; font-weight: normal; font-style: normal; font-size: 18px; padding: 40px 130px; width: 150px; height: 20px; margin: 25px 0px; }
+#upload_form { height: 30px; }
+#upload_form label { float: left; line-height: 40px; }
+#fake_upload { float: left; margin-left: 20px; color: #000000; font-family: 'OpenSansExtrabold', sans-serif; font-weight: normal; font-style: normal; font-size: 18px; width: 110px; }
+
+.progress {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background: #999;
+    border-radius: 0px;
+    overflow: hidden;
+}
+
+.bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 15px;
+    background: #85C220;
+}
+
+.blocks {display: inline-block; width: 280px;}
+
+#fine-uploader-s3 .preview-link {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+
+.wrap{
+    width:100%;    
+}
+.clear_both {
+    clear:both;
+}
+
+@media (max-width: 1462px) {
+	/*#login_form { border-left: 0px; }*/
+}
+
+.card-container.card {
+    max-width: 350px;
+    padding: 40px 40px;
+	float:left;
+}
+
+.btn {
+    font-weight: 700;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+/*
+ * Card component
+ */
+.card {
+    background-color: #F7F7F7;
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+/*
+ * Form styles
+ */
+.profile-name-card {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+}
+
+.reauth-email {
+    display: block;
+    color: #404040;
+    line-height: 2;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div#div_login_form #inputEmail,
+div#div_login_form#inputPassword {
+    direction: ltr;
+    height: 44px;
+    font-size: 16px;
+}
+
+div#div_login_forminput[type=email],
+div#div_login_forminput[type=password],
+div#div_login_forminput[type=text],
+div#div_login_formbutton {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div#div_login_form.form-control:focus {
+    border-color: rgb(104, 145, 162);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+}
+
+.btn-primary {
+    background-image: linear-gradient(to bottom, #428bca 0px, #2d6ca2 100%);
+    background-repeat: repeat-x;
+	color:#fff;
+}
+.btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 1px rgba(0, 0, 0, 0.075);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+.form-signin input[type="email"], .form-signin input[type="password"], .form-signin input[type="text"], .form-signin button {
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+	padding: 5px;
+}
+.form-control {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
+    display: block;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    vertical-align: middle;
+    width: 100%;
+}
+.easyPaginateNav a {border: 1px solid;border-radius: 3px;margin: 5px;padding: 5px;}
+.easyPaginateNav a.current {font-weight:bold;text-decoration:underline;}
+.easyPaginateNav {padding: 25px;}
+li.file{display:block;}
+#myInput {
+    background-color: "#c8c8c8"; /* Add a search icon to input */
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
